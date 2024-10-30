@@ -1,0 +1,68 @@
+CREATE TABLE mascota (
+    id_mascota     VARCHAR2(20 CHAR) NOT NULL,
+    nombre         VARCHAR2(20 CHAR),
+    edad           VARCHAR2(10 CHAR),
+    especie        VARCHAR2(10 CHAR),
+    raza           VARCHAR2(20 CHAR),
+    descripcion    VARCHAR2(20 CHAR),
+    ubicacion      VARCHAR2(20 CHAR),
+    estado         VARCHAR2(20 CHAR),
+    fecha_registro VARCHAR2(10 CHAR)
+);
+
+ALTER TABLE mascota ADD CONSTRAINT mascota_pk PRIMARY KEY ( id_mascota );
+
+CREATE TABLE mensaje (
+    id_mensaje                 VARCHAR2(20 CHAR) NOT NULL,
+    id_remitente               VARCHAR2(20 CHAR),
+    id_destinatario            VARCHAR2(20 CHAR),
+    id_publicacion             VARCHAR2(20 CHAR),
+    fecha_envio                VARCHAR2(10 CHAR),
+    usuario_id_usuario         VARCHAR2(20 CHAR) NOT NULL,
+    publicacion_id_publicacion VARCHAR2(20 CHAR) NOT NULL
+);
+
+ALTER TABLE mensaje ADD CONSTRAINT mensaje_pk PRIMARY KEY ( id_mensaje );
+
+CREATE TABLE publicacion (
+    id_publicacion     VARCHAR2(20 CHAR) NOT NULL,
+    id_usuario         VARCHAR2(20 CHAR),
+    id_mascota         VARCHAR2(20 CHAR),
+    estado             VARCHAR2(20 CHAR),
+    fecha_publicacion  VARCHAR2(20 CHAR),
+    descripcion        VARCHAR2(20 CHAR),
+    usuario_id_usuario VARCHAR2(20 CHAR) NOT NULL,
+    mascota_id_mascota VARCHAR2(20 CHAR) NOT NULL
+);
+
+ALTER TABLE publicacion ADD CONSTRAINT publicacion_pk PRIMARY KEY ( id_publicacion );
+
+CREATE TABLE usuario (
+    id_usuario VARCHAR2(20 CHAR) NOT NULL,
+    nombre     VARCHAR2(20 CHAR),
+    apellido   VARCHAR2(20 CHAR),
+    correo     VARCHAR2(20 CHAR),
+    contraseña VARCHAR2(20 CHAR),
+    direccion  VARCHAR2(20 CHAR),
+    edad       VARCHAR2(10),
+    ciudad     VARCHAR2(20 CHAR),
+    fono       VARCHAR2(10 CHAR)
+);
+
+ALTER TABLE usuario ADD CONSTRAINT usuario_pk PRIMARY KEY ( id_usuario );
+
+ALTER TABLE mensaje
+    ADD CONSTRAINT mensaje_publicacion_fk FOREIGN KEY ( publicacion_id_publicacion )
+        REFERENCES publicacion ( id_publicacion );
+
+ALTER TABLE mensaje
+    ADD CONSTRAINT mensaje_usuario_fk FOREIGN KEY ( usuario_id_usuario )
+        REFERENCES usuario ( id_usuario );
+
+ALTER TABLE publicacion
+    ADD CONSTRAINT publicacion_mascota_fk FOREIGN KEY ( mascota_id_mascota )
+        REFERENCES mascota ( id_mascota );
+
+ALTER TABLE publicacion
+    ADD CONSTRAINT publicacion_usuario_fk FOREIGN KEY ( usuario_id_usuario )
+        REFERENCES usuario ( id_usuario );
