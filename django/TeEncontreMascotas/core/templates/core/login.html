@@ -1,0 +1,38 @@
+{% extends "core/base.html" %}
+{% load static %}
+{% block principal %}
+
+<link href="{% static 'core/css/login.css' %}" rel="stylesheet"/>
+<div class="form-container">
+    <form action="procesar_login.php" method="post">
+        <h1 class="main-title">Te Encontré Mascotas</h1>
+        <h2>Por una tenencia responsable de mascotas</h2>
+        <h1 class="form-title">Iniciar Sesión</h1>
+        <div>
+            <label for="usuario">Usuario:</label>
+            <input type="text" id="usuario" name="usuario" required>
+        </div>
+        <div>
+            <label for="contrasena">Contraseña:</label>
+            <input type="password" id="contrasena" name="contrasena" required>
+        </div>
+        <div class="checkbox-label">
+            <input type="checkbox" id="recordar" name="recordar">
+            <label for="recordar">Recordarme</label>
+        </div>
+        <button type="submit">Iniciar Sesión</button>
+        <div class="forgot-password">
+            <a href="{% url 'recuperar_contrasena' %}">¿Olvidaste tu contraseña?</a>
+        </div>
+        <div class="register-button">
+            <a href="{% url 'registro' %}">¿No tienes cuenta? Regístrate aquí</a>
+        </div>
+    </form>
+</div>
+
+
+  
+
+   
+    
+{% endblock principal %}

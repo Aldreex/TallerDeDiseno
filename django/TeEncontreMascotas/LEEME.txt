@@ -1,0 +1,3 @@
+Falta agregar core a INSTALLED_APPS en TeEncontreMascotas\TeEncontreMascotas\settings.py 
+Falta agregar include y el path de core en TeEncontreMascotas\TeEncontreMascotas\urls.py 
+path('',include('core\.urls')) 

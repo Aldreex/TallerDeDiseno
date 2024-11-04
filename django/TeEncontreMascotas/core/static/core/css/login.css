@@ -1,0 +1,121 @@
+
+body {
+    
+    margin: 0;
+    /*background-image: url('img/background.jpg');  Ruta relativa a la imagen */
+    background-size: cover;
+    background-repeat: no-repeat;
+    display: flex;
+    flex-direction: column;
+    min-height: 105vh;
+}
+
+.form-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
+}
+
+form {
+    width: 300px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: rgba(255, 255, 255, 0.5); /* Fondo semi-transparente */
+}
+
+.main-title {
+    text-align: center;
+    font-size: 28px; /* Tamaño reducido del título */
+    margin-bottom: 1px;
+}
+
+h2 {
+    text-align: center;
+    font-size: 16px; /* Tamaño del subtítulo */
+    margin-bottom: 1px;
+}
+
+h1.form-title {
+    text-align: center;
+    font-size: 25px; /* Tamaño del subtítulo */
+    margin-bottom: 10px;
+}
+
+
+
+label {
+    display: block;
+}
+
+input[type="text"],
+input[type="password"] {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+input[type="checkbox"] {
+    margin-right: 5px; /* Espacio entre el cuadro de verificación y el texto */
+}
+
+.checkbox-label {
+    display: flex;
+    align-items: center;
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    background-color: #a693ff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 20px;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+.forgot-password,
+.register-button {
+    text-align: center;
+    margin-top: 10px;
+}
+
+.forgot-password a,
+.register-button a {
+    color: #000000; /* Cambio del color del enlace */
+    text-decoration: none;
+}
+
+.forgot-password a:hover,
+.register-button a:hover {
+    text-decoration: underline;
+}
+
+.footer {
+    background-color: #6854c0;
+    color: white;
+    padding: 20px 0;
+    text-align: center;
+}
+
+.footer a {
+    color: white;
+    text-decoration: none;
+}
+
+.footer a:hover {
+    text-decoration: underline;
+}
+
+.nav-link {
+    padding-top: 5px; /* Ajustar este valor según sea necesario */
+    padding-bottom: 6px; /* Ajustar este valor según sea necesario */
+}
