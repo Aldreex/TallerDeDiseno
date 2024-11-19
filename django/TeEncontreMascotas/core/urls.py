@@ -8,6 +8,6 @@ urlpatterns = [
    path("login/", login, name="login"),
    path("servicios/", servicios, name="servicios"),
    path("recuperar_contrasena", recuperar_contrasena, name="recuperar_contrasena"),
-   path("argearmascota", agregarMascota, name="agregarmascota"),
+   path("mascotas/agregarmascota/", agregarMascota, name="agregarmascota"),
    path("logout", logout, name="logout" )
 ] 

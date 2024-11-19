@@ -1,21 +1,5 @@
 from django.db import models
 
-# Create your models here.
-class Mascota(models.Model):
-    
-    id_mascota = models.AutoField("id_mascota", primary_key=True)
-    nombre = models.CharField("Nombre Mascota", max_length=64)
-    edad = models.IntegerField("Edad Mascota", null=True)
-    especie = models.CharField("Especie Mascota", max_length=32)
-    raza = models.CharField("Raza Mascota", max_length=32, null=True)
-    descripcion = models.TextField("Descripcion Mascota", max_length=254)
-    ubicacion = models.CharField("Ubicacion Mascota", max_length=64)
-    estado = models.CharField("Estado Mascota", max_length=20, null=True)
-    fecha_registro = models.DateField("Fecha de Registro")
-
-    def __str__(self):
-        return f"Mascota {self.nombre}"
-
 class Usuario(models.Model):
     id_usuario = models.AutoField(verbose_name="Id de Usuario", primary_key=True)
     rut = models.CharField(max_length=12, null=False, default="none")
@@ -30,6 +14,24 @@ class Usuario(models.Model):
 
     def __str__(self):
         return f"{self.nombre} {self.apellido}"
+
+# Create your models here.
+class Mascota(models.Model):
+    
+    id_mascota = models.AutoField("id_mascota", primary_key=True)
+    nombre = models.CharField("Nombre Mascota", max_length=64)
+    edad = models.IntegerField("Edad Mascota", null=True)
+    especie = models.CharField("Especie Mascota", max_length=32)
+    raza = models.CharField("Raza Mascota", max_length=32, null=True)
+    descripcion = models.TextField("Descripcion Mascota", max_length=254)
+    ubicacion = models.CharField("Ubicacion Mascota", max_length=64)
+    estado = models.CharField("Estado Mascota", max_length=20, null=True)
+    fecha_registro = models.DateField("Fecha de Registro")
+    id_usuario = models.ForeignKey(Usuario, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return f"Mascota {self.nombre}"
+
 
 
 class Publicacion(models.Model):

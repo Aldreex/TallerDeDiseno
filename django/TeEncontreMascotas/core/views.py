@@ -2,8 +2,10 @@ from django.shortcuts import render, redirect
 from django.views.decorators.csrf import csrf_exempt
 from django.http import HttpResponseRedirect, HttpResponse
 from django.template.response import TemplateResponse
+from  django.core.exceptions import *
 from .models import *
 from .forms import *
+import datetime 
 import json
 
 # Create your views here.
@@ -14,14 +16,12 @@ def index(request):
     if is_logged_in:
         return TemplateResponse(request, "core/index.html", {correo: correo})
     
-   
-
     return TemplateResponse(request, 'core/index.html') 
 
 def base(request):
+    fecha = request.session["fecha"] = datetime.date.today()
     correo = request.session.get("correo", "Invitado")
     is_logged_in = request.session.get("is_logged_in", False)
-    print("HELP PLEASE")
     if is_logged_in:
         return TemplateResponse(request, "core/base.html", {correo: correo})
 
@@ -36,7 +36,8 @@ def catalogo(request):
     return TemplateResponse(request, 'core/catalogo.html', datos)
 
 def login(request):
-    if request.method == 'POST':
+    sesionIniciada = request.session.get("is_logged_in", False)
+    if request.method == 'POST' and not sesionIniciada:
         form = LoginForm(request.POST)
         if form.is_valid():
             correoIn = form.cleaned_data["correo"]
@@ -46,6 +47,7 @@ def login(request):
                 request.session["nombre"] = usuario.nombre
                 request.session["correo"] = correoIn
                 request.session["is_logged_in"] = True
+                request.session["id"] = usuario.id_usuario
                 print("Sesion Iniciada con Exito")
                 return TemplateResponse(request, 'core/index.html', {"correo": correoIn})
             except:
@@ -85,9 +87,30 @@ def servicios(request):
     return TemplateResponse(request, 'core/servicios.html')
 
 def agregarMascota(request):
+    if request.method == 'POST':
+        form =MascotaForm(request.POST)
+        if form.is_valid():
+            correoSesion = request.session["correo"]
+            usuario = Usuario.objects.get(correo=correoSesion)
+    
+            nuevaMascota=  form.save(commit=False)
+            nuevaMascota.id_usuario = usuario
+            print("fecha: ", datetime.date.today())
+            nuevaMascota.fecha_registro = str(datetime.date.today())
+
+            try:
+                nuevaMascota.save()
+                
+                return TemplateResponse(request, 'core/index.html', {})
+            except ModuleNotFoundError:
+                
+                return TemplateResponse(request, "core/index.html", {})
+        else:
+            return TemplateResponse(request, "core/index.html", {})
+
     form = MascotaForm()
 
-    return TemplateResponse(request, 'core/mascotas/addmascota.html', {"form": form})
+    return TemplateResponse(request, 'core/mascotas/agregarmascota.html', {"form": form})
 
 def recuperar_contrasena(request):
 

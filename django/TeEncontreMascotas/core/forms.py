@@ -124,6 +124,15 @@ class AgregarMascota(ModelForm):
             "ubicacion",
             "estado",
         ]
+        widgets = {
+            "nombre": forms.TextInput(attrs={"label": "Nombre", "class": "form-control", "required": True}),
+            "edad": forms.NumberInput(attrs={"class": "form-control", "required": True}),
+            "especie": forms.TextInput(attrs={"class": "form-control", "required": True}),
+            "raza": forms.TextInput(attrs={"class": "form-control", "required": True}),
+            "descripcion": forms.TextInput(attrs={"class": "form-control", "cols":110, "required": True}),
+            "ubicacion": forms.TextInput(attrs={"class": "form-control", "required": True}),
+            "estado": forms.TextInput(attrs={"class": "form-control", "required": True}),
+        }
 
 class RecuperarContrasenaForm(ModelForm):
 

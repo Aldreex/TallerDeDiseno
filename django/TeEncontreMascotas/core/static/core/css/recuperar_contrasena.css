@@ -50,12 +50,17 @@ label {
 }
 
 input[type="text"],
+input[type="number"],
 input[type="password"] {
     width: 100%;
     padding: 8px;
     border: 1px solid #ccc;
     border-radius: 4px;
     box-sizing: border-box;
+}
+
+.textArea {
+    width: 90%
 }
 
 input[type="checkbox"] {
@@ -118,4 +123,8 @@ button:hover {
 .nav-link {
     padding-top: 5px; /* Ajustar este valor según sea necesario */
     padding-bottom: 6px; /* Ajustar este valor según sea necesario */
+}
+
+#registroMascota {
+    width: 50% !important;
 }
