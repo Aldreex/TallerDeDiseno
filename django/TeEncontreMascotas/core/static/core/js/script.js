@@ -1,5 +1,6 @@
 /* CAPTURAMOS EL FORMULARIO CUANDO SE PRESIONA EL BOTON*/
 document.getElementById("formulario").addEventListener("submit", function (e) {
+  return null;
   // DETENER EL FORMULARIO
   e.preventDefault();
 
@@ -7,8 +8,8 @@ document.getElementById("formulario").addEventListener("submit", function (e) {
   const nombre = document.getElementById("txtNombre");
   const edad = document.getElementById("txtEdad");
   const correo = document.getElementById("txtCorreo");
-  const fecha = document.getElementById("txtFecha");
-  const genero = document.getElementById("cboGenero");
+  //const fecha = document.getElementById("txtFecha");
+  //const genero = document.getElementById("cboGenero");
 
   // BANDERA O AUXILIAR
   let aux = true;
@@ -42,8 +43,8 @@ document.getElementById("formulario").addEventListener("submit", function (e) {
       nombre: nombre.value,
       edad: edad.value,
       correo: correo.value,
-      fecha: fecha.value,
-      genero: genero.value,
+    //  fecha: fecha.value,
+      
     };
 
     // CREAR UNA BD Y SI NO EXISTE SE CREA UN ARREGLO VACIO
@@ -64,7 +65,6 @@ document.getElementById("formulario").addEventListener("submit", function (e) {
     edad.value = '';
     correo.value = '';
     fecha.value = '';
-    genero.value = '';
   } else {
     // MUESTRA MENSAJE DE ERROR
     Swal.fire({
@@ -74,3 +74,12 @@ document.getElementById("formulario").addEventListener("submit", function (e) {
     });
   }
 });
+
+function confirmarFormulario() {
+  Swal.fire({
+    title: "Guardado!",
+    text: "Formulario ingresado correctamente!",
+    icon: "success",
+  });
+
+}

@@ -1,5 +1,7 @@
 {% extends "core/base.html" %}
 {% load static %}
+
+
 {% block principal %}
 
 <!-- INICIO JUMBOTRON -->
@@ -20,61 +22,13 @@
         <div class="col-md-2"></div>
         <div class="col-md-8">
             <!-- Inicio del formulario -->
-            <form action="recibo.html" method="GET" id="formulario">
+            <form action="{% url 'registro' %}" method="POST" id="formulario">
+                
                 <div class="mb-3">
-                    <label for="txtId">Ingresa Rut:</label>
-                    <input placeholder="Ej: 18.505.582-5" type="number" class="form-control" id="txtId" name="txtId" required>
-                    <div class="invalid-feedback">Solo se permiten numeros.</div>
+                    {% csrf_token %}          
+                    {{form}}
                 </div> 
-                <div class="mb-3">
-                    <label for="txtNombre">Ingresa Nombre y Apellidos:</label>
-                    <input placeholder="Ej: Aldrix" type="text" class="form-control" id="txtNombre" name="txtNombre" required>
-                    <div class="invalid-feedback">Solo se permiten letras.</div>
-                </div>
-                <div class="mb-3">
-                    <label for="txtCorreo">Ingresa Correo:</label>
-                    <input placeholder="Ej: adiaz@mail.com" type="email" class="form-control" id="txtCorreo" name="txtCorreo" required>
-                    <div class="invalid-feedback">Solo se permiten correos @inacapmail.cl</div>
-                </div>
-                <div class="mb-3">
-                    <label for="txtContrasena">Ingresa Contraseña:</label>
-                    <input placeholder="Ej: F!iSc*Rn" type="password" class="form-control" id="txtContrasena" name="txtContrasena" required>
-                    <div class="invalid-feedback">Solo se permiten correos @inacapmail.cl</div>
-                </div>
-                <div class="mb-3">
-                    <label for="txtDireccion">Ingresa tu Direccion:</label>
-                    <input placeholder="Ej: Vicuña Mackenna 2020" type="text" class="form-control" id="txtDireccion" name="txtDireccion" required>
-                    <div class="invalid-feedback">Solo se permiten correos @inacapmail.cl</div>
-                </div>
-                <div class="mb-3">
-                    <label for="txtComuna">Ingresa tu Comuna:</label>
-                    <input placeholder="Ej: Puente Alto" type="text" class="form-control" id="txtComuna" name="txtComuna" required>
-                    <div class="invalid-feedback">Solo se permiten correos @inacapmail.cl</div>
-                </div>
-                <div class="mb-3">
-                    <label for="txtEdad">Ingresa Edad:</label>
-                    <input placeholder="Ej: 33" type="number" class="form-control" id="txtEdad" name="txtEdad" required>
-                    <div class="invalid-feedback">Solo se permiten numeros.</div>
-                </div>
-                <div class="mb-3">
-                    <label for="txtTelefono">Ingresa tu Numero Telefonico:</label>
-                    <input placeholder="Ej: +569 8958 1595" type="number" class="form-control" id="txtTelefono" name="txtTelefono" required>
-                    <div class="invalid-feedback">Solo se permiten numeros.</div>
-                </div>
-                <div class="mb-3">
-                    <label for="txtFecha">Ingresa Fecha de Nacimiento:</label>
-                    <input placeholder="Ej: 23-12-1993"type="date" class="form-control" id="txtFecha" name="txtFecha" required>
-                </div>
-                <div class="mb-3">
-                    <label for="cboGenero" class="form-label">Seleccione Genero:</label>
-                    <select name="cboGenero" class="form-control" id="cboGenero" required>
-                        <option value="">Seleccionar</option>
-                        <option value="Masculino">Masculino</option>
-                        <option value="Femenino">Femenino</option>
-                        <option value="Prefiero no decirlo">Prefiero no decirlo</option>
-                    </select>
-                </div>
-                <button class="btn" type="submit" id="btnGuardar" name="btnGuardar" style="background-color: #a693ff; color: white;">Registrar Datos</button>
+                <button class="btn" type="submit" value="Submit" id="btnGuardar" name="btnGuardar" style="background-color: #a693ff; color: white;">Registrar Datos</button>
 
 
             </form> 

@@ -18,10 +18,11 @@ class Mascota(models.Model):
 
 class Usuario(models.Model):
     id_usuario = models.AutoField(verbose_name="Id de Usuario", primary_key=True)
+    rut = models.CharField(max_length=12, null=False, default="none")
     nombre = models.CharField(max_length=20, blank=True, null=True)
     apellido = models.CharField(max_length=20, blank=True, null=True)
     correo = models.EmailField(max_length=254, blank=True, null=True)
-    contrasenia = models.CharField(max_length=20, blank=True, null=True)
+    contrasenia = models.CharField(verbose_name="Contraseña",max_length=20, blank=True, null=True)
     direccion = models.CharField(max_length=100, blank=True, null=True)
     edad = models.CharField(max_length=10, blank=True, null=True)
     ciudad = models.CharField(max_length=20, blank=True, null=True)

@@ -1,0 +1,37 @@
+{% load static %}
+
+{% block nav %}
+<nav class="navbar navbar-expand-sm" style="height: 40px; background-color: #F6F6FF;">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="{% url 'index' %}">
+            <img src="{% static 'core\img\img\LogoTeEncontre.jpg' %}" alt="Logo" class="img-fluid rounded"
+                style="width: 100px; height: auto" /></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="collapsibleNavbar">
+            <ul class="navbar-nav me-automb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'index' %}">INICIO</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'servicios' %}">SERVICIOS</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'catalogo' %}">CATALOGO</a>
+                </li>
+            </ul>
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <h1><p>{{correo}}</p></h1>
+                    {% if correo %}
+                    <a id="opcionSesion" class="nav-link" href="{% url 'login' %}">CERRAR SESION</a>
+                    {% else %}
+                    <a id="opcionSesion" class="nav-link" href="{% url 'login' %}">INICIAR SESION</a>
+                    {% endif %}
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+{% endblock %}
