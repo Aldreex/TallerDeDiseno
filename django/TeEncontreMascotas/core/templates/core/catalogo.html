@@ -12,9 +12,8 @@
                 <div class="card">
                     {% if not mascota.imagen  == 'null' %}
                     <img class="card-img-top" src="{{mascota.imagen.url}}" />
-                    <p>{{mascota.imagen}}</p>
+                    
                     {% endif %}
-                    <img class="card-img-top" src="{% static 'core/img/catalogo/catalogo(1).JPEG' %}" alt="Minina" />
                     <div class="card-body">
                         <h4 class="card-title">{{mascota.nombre}} - {{mascota.estado}}</h4>
                         <p class="card-text"><li>{{mascota.especie}}</li>
