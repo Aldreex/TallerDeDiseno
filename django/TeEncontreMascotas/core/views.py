@@ -59,7 +59,6 @@ def login(request):
     return TemplateResponse(request, 'core/login.html', {"form":form})
 
 def logout(request):
-    print("LOGOUT")
     request.session.flush()
     return TemplateResponse(request, 'core/index.html', {})
 

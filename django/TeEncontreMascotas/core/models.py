@@ -27,6 +27,7 @@ class Mascota(models.Model):
     ubicacion = models.CharField("Ubicacion Mascota", max_length=64)
     estado = models.CharField("Estado Mascota", max_length=20, null=True)
     fecha_registro = models.DateField("Fecha de Registro")
+    imagen = models.ImageField(null=True, default="null", blank=True)
     id_usuario = models.ForeignKey(Usuario, on_delete=models.CASCADE)
 
     def __str__(self):

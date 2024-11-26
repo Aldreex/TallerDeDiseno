@@ -1,3 +1,7 @@
 django/TeEncontreMascotas/TeEncontreMascotas/__pycache__/
 env/
+img/
+django/TeEncontreMascotas/core/static/core/img/img/
+*.png
 *.pyc
+apuntes.txt

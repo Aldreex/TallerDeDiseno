@@ -5,7 +5,6 @@ from .models import *
 class MascotaAdmin(admin.ModelAdmin):
     list_display = [ 'id_mascota', 'nombre', 'edad', 'especie', 'raza', 'ubicacion', 'estado']
     search_fields = ['nombre', 'especie', 'estado']
-    list_per_page = 2
 
 class UsuarioAdmin(admin.ModelAdmin):
     list_display = ['id_usuario', 'nombre', 'apellido', 'correo', 'edad', 'direccion', 'ciudad', 'fono']
