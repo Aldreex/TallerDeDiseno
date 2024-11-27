@@ -4,25 +4,156 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Home - Te Encontré Mascotas</title>
-    <!-- Latest compiled and minified CSS -->
+    <title>Catálogo Principal - Te Encontré Mascotas</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <style>
+        .card {
+            margin-bottom: 20px;
+            border-radius: 10px;
+            position: relative;
+            border: 1px solid #ddd;
+        }
 
+        .card-img-top {
+            height: 300px;
+            object-fit: cover;
+        }
 
+        .card-body {
+            background-color: #F8F9FA;
+            border-radius: 10px;
+        }
 
+        .card-title {
+            font-weight: bold;
+            color: #3E3E3E;
+            margin-bottom: 10px;
+        }
+
+        .ribbon {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: red;
+            color: white;
+            padding: 5px 10px;
+            font-size: 14px;
+            font-weight: bold;
+            border-radius: 5px;
+            z-index: 1;
+        }
+
+        .btn-detail {
+            background-color: #875FA4;
+            color: white;
+            font-weight: bold;
+            border: none;
+            width: 100%;
+            margin-bottom: 10px;
+        }
+
+        .btn-detail:hover {
+            background-color: #5A3E77;
+            color: white;
+        }
+
+        .btn-favorite {
+            background-color: transparent;
+            color: red;
+            font-weight: bold;
+            border: none;
+            width: 100%;
+            margin-bottom: 10px;
+        }
+
+        .btn-favorite i {
+            margin-right: 5px;
+        }
+
+        .btn-remove-favorite {
+            background-color: transparent;
+            color: red;
+            font-weight: bold;
+            border: none;
+            margin-top: 10px;
+        }
+
+        .btn-share {
+            background-color: transparent;
+            color: green;
+            font-weight: bold;
+            border: none;
+            width: 100%;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+        .btn-share i {
+            margin-right: 5px;
+        }
+
+        .share-options {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: white;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            z-index: 10;
+            padding: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            text-align: left;
+        }
+
+        .share-options a {
+            display: block;
+            color: #3E3E3E;
+            text-decoration: none;
+            margin-bottom: 5px;
+        }
+
+        .share-options a:hover {
+            text-decoration: underline;
+        }
+
+        .navbar {
+            background-color: #F6F6FF;
+        }
+
+        .container {
+            margin-top: 30px;
+        }
+
+        .favorites-section {
+            margin-top: 50px;
+        }
+
+        @media (max-width: 768px) {
+            .card-img-top {
+                height: 250px;
+            }
+
+            .col-md-4 {
+                margin-bottom: 15px;
+            }
+        }
+    </style>
 </head>
 
 <body>
-    <!-- CODIGO DE W3 SCHOOL PARA UNA BARRA DE NAVEGACION -->
-    <nav class="navbar navbar-expand-sm" style="height: 40px; background-color: #F6F6FF;">
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-sm" style="height: 40px;">
         <div class="container-fluid">
-            <a class="navbar-brand" href="index.html"><img src="img/LogoTeEncontre.jpg" alt="Logo" class="img-fluid rounded"
-                    style="width: 100px; height: auto" /></a>
+            <a class="navbar-brand" href="index.html"><img src="img/LogoTeEncontre.jpg" alt="Logo"
+                    class="img-fluid rounded" style="width: 100px; height: auto" /></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="collapsibleNavbar">
-                <ul class="navbar-nav me-automb-2 mb-lg-0">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
                         <a class="nav-link" href="index.html">INICIO</a>
                     </li>
@@ -30,238 +161,358 @@
                         <a class="nav-link" href="servicios.html">SERVICIOS</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="catalogo.html">CATALOGO</a>
+                        <a class="nav-link" href="catalogo.html">CATÁLOGO</a>
                     </li>
                 </ul>
                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link" href="login.html">INICIAR SESION</a>
+                        <a class="nav-link" href="login.html">INICIAR SESIÓN</a>
                     </li>
                 </ul>
             </div>
         </div>
     </nav>
-    <!-- FIN DE NAVBAR -->
 
-    <!-- INICIO TARJETAS -->
-    <div class="mt-0 p-5 text-white text-center" style="background-color: #7A6BBC;">
-        <h1>Catalogo de Mascotas</h1>
-        <div class="container mt-4">
-            <div class="row justify-content-center">
-                <div class="col-md-4">
-                    <div class="card">
-                        <img class="card-img-top" src="img/catalogo/catalogo (1).JPEG" alt="Minina" />
-                        <div class="card-body">
-                            <h4 class="card-title">Minina - Adopcion</h4>
-                            <p class="card-text"><li>Blanquita con manchas grises.</li>
-                                <li>Le encantan las caricias.</li>
-                                <li>Mansita y Cariñosa.</li>
-                                <li>Ubicacion San Clemente, Region del Maule.</li>
-                                <li>Numero de contacto +56967529753.</li>
-                            </p>
-                            <a href="#" class="btn btn-primary" style="background-color: #a693ff; border-color: #a693ff;">Saber Mas</a>
-                        </div>
-                    </div>
+    <!-- Filtro -->
+    <div class="container mt-3">
+        <form class="row g-3">
+            <div class="col-md-6">
+                <label for="filtroComuna" class="form-label">Comuna</label>
+                <select id="filtroComuna" class="form-select">
+                    <option value="todas">Todas las Comunas</option>
+                    <option value="alhue">Alhué</option>
+                    <option value="buin">Buin</option>
+                    <option value="calera-de-tango">Calera de Tango</option>
+                    <option value="cerrillos">Cerrillos</option>
+                    <option value="cerro-navia">Cerro Navia</option>
+                    <option value="colina">Colina</option>
+                    <option value="conchali">Conchalí</option>
+                    <option value="curacavi">Curacaví</option>
+                    <option value="el-bosque">El Bosque</option>
+                    <option value="estacion-central">Estación Central</option>
+                    <option value="huechuraba">Huechuraba</option>
+                    <option value="independencia">Independencia</option>
+                    <option value="la-cisterna">La Cisterna</option>
+                    <option value="la-florida">La Florida</option>
+                    <option value="la-granja">La Granja</option>
+                    <option value="la-pintana">La Pintana</option>
+                    <option value="la-reina">La Reina</option>
+                    <option value="lampa">Lampa</option>
+                    <option value="las-condes">Las Condes</option>
+                    <option value="lo-barnechea">Lo Barnechea</option>
+                    <option value="lo-espejo">Lo Espejo</option>
+                    <option value="lo-prado">Lo Prado</option>
+                    <option value="macul">Macul</option>
+                    <option value="maipu">Maipú</option>
+                    <option value="melipilla">Melipilla</option>
+                    <option value="nunoa">Ñuñoa</option>
+                    <option value="padre-hurtado">Padre Hurtado</option>
+                    <option value="paine">Paine</option>
+                    <option value="penaflor">Peñaflor</option>
+                    <option value="penalolen">Peñalolén</option>
+                    <option value="pirque">Pirque</option>
+                    <option value="providencia">Providencia</option>
+                    <option value="pudahuel">Pudahuel</option>
+                    <option value="puente-alto">Puente Alto</option>
+                    <option value="quilicura">Quilicura</option>
+                    <option value="quinta-normal">Quinta Normal</option>
+                    <option value="recoleta">Recoleta</option>
+                    <option value="renca">Renca</option>
+                    <option value="san-bernardo">San Bernardo</option>
+                    <option value="san-joaquin">San Joaquín</option>
+                    <option value="san-jose-de-maipo">San José de Maipo</option>
+                    <option value="san-miguel">San Miguel</option>
+                    <option value="san-pedro">San Pedro</option>
+                    <option value="san-ramon">San Ramón</option>
+                    <option value="santiago">Santiago</option>
+                    <option value="talagante">Talagante</option>
+                    <option value="tiltil">Tiltil</option>
+                    <option value="vitacura">Vitacura</option>
+                </select>
+            </div>
+            <div class="col-md-6">
+                <label for="filtroTipo" class="form-label">Tipo</label>
+                <select id="filtroTipo" class="form-select">
+                    <option value="todos">Todos</option>
+                    <option value="adopcion">Mascotas en Adopción</option>
+                    <option value="perdidas">Mascotas Perdidas</option>
+                </select>
+            </div>
+            <div class="col-12 text-center">
+                <button type="button" id="filtrar" class="btn btn-primary">Filtrar</button>
+            </div>
+        </form>
+    </div>
+
+    <div class="col-md-4">
+        <div class="card" style="position: fixed; top: 50%; left: 0; transform: translateY(-50%); width: 200px; height: 500px; border: none; z-index: 999;">
+            <img src="img/BannerMundoTito.png" class="card-img-top" alt="MundoTito Banner" style="height: 100%; width: 100%; object-fit: cover;">
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card" style="position: fixed; top: 50%; right: 0; transform: translateY(-50%); width: 200px; height: 500px; border: none; z-index: 999;">
+            <img src="img/BannerSuperZoo.png" class="card-img-top" alt="SuperZoo Banner" style="height: 100%; width: 100%; object-fit: cover;">
+        </div>
+    </div>
+    
+    
+
+    <!-- Catálogo Principal -->
+    <div class="container mt-4">
+        <h1 class="text-center mb-4">Catálogo de Mascotas</h1>
+        <div class="row" id="catalogo">
+            <!-- Las tarjetas serán generadas dinámicamente aquí -->
+        </div>
+    </div>
+
+    <!-- Favoritos -->
+    <div class="container favorites-section">
+        <h2 class="text-center mb-4">Favoritos</h2>
+        <div class="row" id="favoritos">
+            <!-- Los favoritos se mostrarán aquí -->
+        </div>
+    </div>
+
+    <!-- Modal para Ver Más Detalles -->
+    <div class="modal fade" id="detalleModal" tabindex="-1" aria-labelledby="detalleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="detalleModalLabel">Detalles de la Mascota</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <div class="col-md-4">
-                    <div class="card">
-                        <img class="card-img-top" src="img/catalogo/catalogo (2).JPEG" alt="Tupac" />
-                        <div class="card-body">
-                            <h4 class="card-title">Tupac - Adopcion</h4>
-                            <p class="card-text"><li>Pequeñin de 3 meses.</li>
-                                <li>Le gusta el el rap.</li>
-                                <li>Tambien es muy amistoso.</li>
-                                <li>Ubicacion Quilicura, Region Metropolitana.</li>
-                                <li>Numero de contacto +56962339820.</li>
-                            </p>
-                            <a href="#" class="btn btn-primary" style="background-color: #a693ff; border-color: #a693ff;">Saber Mas</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="card">
-                        <img class="card-img-top" src="img/catalogo/catalogo (3).JPEG" alt="Cuchina" />
-                        <div class="card-body">
-                            <h4 class="card-title">Cuchina - Adopcion</h4>
-                            <p class="card-text"><li>Bella gatita tricolor.</li>
-                                <li>Juguetona.</li>
-                                <li>Timida pero cariñosa.</li>
-                                <li>Ubicacion Maipu, Region Metropolitana.</li>
-                                <li>Numero de contacto +56945845756.</li>
-                            </p>
-                            <a href="#" class="btn btn-primary" style="background-color: #a693ff; border-color: #a693ff;">Saber Mas</a>
-                        </div>
-                    </div>
+                <div class="modal-body">
+                    <img id="detalleImg" class="img-fluid mb-3" src="" alt="Mascota">
+                    <h5 id="detalleTitulo"></h5>
+                    <p id="detalleDescripcion"></p>
+                    <p><strong>Contacto:</strong> <span id="detalleContacto"></span></p>
                 </div>
             </div>
         </div>
-        
-            <div class="container mt-4">
-                <div class="row justify-content-center">
-                    <div class="col-md-4">
-                        <div class="card">
-                            <img class="card-img-top" src="img/catalogo/catalogo (4).JPEG" alt="Goku" />
-                            <div class="card-body">
-                                <h4 class="card-title">Goku - Adopcion</h4>
-                                <p class="card-text"><li>Gatito rubio muy jugueton.</li>
-                                    <li>Le encanta socializar.</li>
-                                    <li>Mansito y regalon.</li>
-                                    <li>Ubicacion Maipu, Region Metropolitana.</li>
-                                    <li>Numero de contacto +56945845756.</li>
-                                </p>
-                                <a href="#" class="btn btn-primary" style="background-color: #a693ff; border-color: #a693ff;">Saber Mas</a>
+    </div>
+
+    <script>
+        const catalogo = document.getElementById("catalogo");
+        const favoritosSection = document.getElementById("favoritos");
+
+        // Mascotas
+        const mascotas = [
+            { id: 1, img: "img/catalogo/catalogo (1).JPEG", titulo: "Max", tipo: "Adopción", estado: "Adoptada", descripcion: "Gato cariñoso y juguetón.", contacto: "+56912345678" },
+            { id: 2, img: "img/catalogo/catalogo (2).JPEG", titulo: "Luna", tipo: "Perdida", estado: "Perdida", descripcion: "Se perdió cerca del parque central.", contacto: "+56998765432" },
+            { id: 3, img: "img/catalogo/catalogo (3).JPEG", titulo: "Simba", tipo: "Adopción", estado: "Disponible", descripcion: "Le encanta explorar y jugar.", contacto: "+56965432198" },
+            { id: 4, img: "img/catalogo/catalogo (4).JPEG", titulo: "Nina", tipo: "Perdida", estado: "Perdida", descripcion: "Perdida en Puente Alto.", contacto: "+56934565412" },
+            { id: 5, img: "img/catalogo/catalogo (5).JPEG", titulo: "Lilo", tipo: "Adopción", estado: "Disponible", descripcion: "Ideal para familias con niños.", contacto: "+56987654321" },
+            { id: 6, img: "img/catalogo/catalogo (6).JPEG", titulo: "Coco", tipo: "Perdida", estado: "Perdida", descripcion: "Se perdió en Maipú.", contacto: "+56956789123" },
+            { id: 7, img: "img/catalogo/catalogo (7).JPEG", titulo: "Milo", tipo: "Adopción", estado: "Disponible", descripcion: "Amistoso con otros animales.", contacto: "+56912348765" },
+            { id: 8, img: "img/catalogo/catalogo (8).JPEG", titulo: "Bella", tipo: "Adopción", estado: "Disponible", descripcion: "Tranquila y cariñosa.", contacto: "+56945678901" },
+            { id: 9, img: "img/catalogo/catalogo (9).JPEG", titulo: "Toby", tipo: "Perdida", estado: "Perdida", descripcion: "Perdido en La Florida.", contacto: "+56987654321" },
+        ];
+
+        // Comunas con mascotas disponibles
+        const comunasConMascotas = {
+            "cerro-navia": true,
+            "puente-alto": true,
+
+        };
+
+
+
+        // Generar catálogo
+        const generarCatalogo = () => {
+            catalogo.innerHTML = "";
+            mascotas.forEach((mascota) => {
+                catalogo.innerHTML += `
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="ribbon">${mascota.estado}</div>
+                        <img src="${mascota.img}" class="card-img-top" alt="${mascota.titulo}">
+                        <div class="card-body">
+                            <h5 class="card-title">${mascota.titulo} - ${mascota.tipo}</h5>
+                            <p>${mascota.descripcion}</p>
+                            <button class="btn btn-detail mb-2" onclick="verDetalle(${mascota.id})"><i class="fa fa-info-circle"></i> Ver más detalles</button>
+                            <button class="btn btn-favorite mb-2" onclick="guardarFavorito(${mascota.id})"><i class="fa fa-heart"></i> Guardar en Favoritos</button>
+                            <div class="btn-share">
+                                <i class="fa fa-share-alt"></i> Compartir
+                                <div class="share-options">
+                                    <a href="https://www.facebook.com/sharer/sharer.php?u=#" target="_blank"><i class="fab fa-facebook"></i> Facebook</a>
+                                    <a href="https://twitter.com/intent/tweet?url=#&text=Conoce a esta mascota!" target="_blank"><i class="fab fa-twitter"></i> Twitter</a>
+                                    <a href="https://wa.me/?text=Conoce%20a%20esta%20mascota!" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-4">
-                        <div class="card">
-                            <img class="card-img-top" src="img/catalogo/catalogo (6).JPEG" alt="Ramon" />
-                            <div class="card-body">
-                                <h4 class="card-title">Ramon - Extraviado</h4>
-                                <p class="card-text"><li>Extraviado en Maipu.</li>
-                                    <li>1 Añito.</li>
-                                    <li>Muy asustadizo.</li>
-                                    <li>Ubicacion Maipu, Region Metropolitana.</li>
-                                    <li>Numero de contacto +56987456983.</li>
-                                </p>
-                                <a href="#" class="btn btn-primary" style="background-color: #a693ff; border-color: #a693ff;">Saber Mas</a>
-                            </div>
+                </div>`;
+            });
+
+            // Mostrar y ocultar opciones de compartir
+            document.querySelectorAll(".btn-share").forEach((button) => {
+                button.addEventListener("click", () => {
+                    const shareOptions = button.querySelector(".share-options");
+                    shareOptions.style.display = shareOptions.style.display === "block" ? "none" : "block";
+                });
+            });
+        };
+
+        // Guardar en favoritos
+        const guardarFavorito = (id) => {
+            const favoritos = JSON.parse(localStorage.getItem("favoritos")) || [];
+            const mascota = mascotas.find((m) => m.id === id);
+
+            if (!favoritos.some((fav) => fav.id === id)) {
+                favoritos.push(mascota);
+                localStorage.setItem("favoritos", JSON.stringify(favoritos));
+                alert(`La mascota "${mascota.titulo}" ha sido guardada en tus favoritos.`);
+            } else {
+                alert(`La mascota "${mascota.titulo}" ya está en tus favoritos.`);
+            }
+
+            mostrarFavoritos();
+        };
+
+        // Mostrar favoritos
+        const mostrarFavoritos = () => {
+            const favoritos = JSON.parse(localStorage.getItem("favoritos")) || [];
+            favoritosSection.innerHTML = "";
+
+            if (favoritos.length === 0) {
+                favoritosSection.innerHTML = `<p class="text-center">No tienes mascotas en favoritos.</p>`;
+                return;
+            }
+
+            favoritos.forEach((favorito) => {
+                favoritosSection.innerHTML += `
+                <div class="col-md-4">
+                    <div class="card">
+                        <img src="${favorito.img}" class="card-img-top" alt="${favorito.titulo}">
+                        <div class="card-body">
+                            <h5 class="card-title">${favorito.titulo} - ${favorito.tipo}</h5>
+                            <p>${favorito.descripcion}</p>
+                            <button class="btn btn-remove-favorite" onclick="eliminarFavorito(${favorito.id})"><i class="fa fa-trash"></i> Eliminar de Favoritos</button>
                         </div>
                     </div>
-                    <div class="col-md-4">
-                        <div class="card">
-                            <img class="card-img-top" src="img/catalogo/catalogo (5).JPEG" alt="Salem" />
-                            <div class="card-body">
-                                <h4 class="card-title">Salem - Adopcion</h4>
-                                <p class="card-text"><li>Pequeñin de 2 meses.</li>
-                                    <li>Muy curioso.</li>
-                                    <li>Le gusta mucho dormir.</li>
-                                    <li>Ubicacion Maipu, Region Metropolitana.</li>
-                                    <li>Numero de contacto +56945845756.</li>
-                                </p>
-                                <a href="#" class="btn btn-primary" style="background-color: #a693ff; border-color: #a693ff;">Saber Mas</a>
-                            </div>
-                        </div>
+                </div>`;
+            });
+        };
+
+        // Eliminar de favoritos
+        const eliminarFavorito = (id) => {
+            let favoritos = JSON.parse(localStorage.getItem("favoritos")) || [];
+            favoritos = favoritos.filter((fav) => fav.id !== id);
+            localStorage.setItem("favoritos", JSON.stringify(favoritos));
+            mostrarFavoritos();
+        };
+
+        // Ver más detalles
+        const verDetalle = (id) => {
+            const mascota = mascotas.find((m) => m.id === id);
+            document.getElementById("detalleImg").src = mascota.img;
+            document.getElementById("detalleTitulo").innerText = `${mascota.titulo} - ${mascota.tipo}`;
+            document.getElementById("detalleDescripcion").innerText = mascota.descripcion;
+            document.getElementById("detalleContacto").innerText = mascota.contacto;
+            const detalleModal = new bootstrap.Modal(document.getElementById("detalleModal"));
+            detalleModal.show();
+        };
+
+        // Inicializar
+        generarCatalogo();
+        mostrarFavoritos();
+    </script>
+
+    <script>
+        const catalogo = document.getElementById("catalogo");
+
+        // Mascotas agrupadas por comuna y tipo
+        const comunas = {
+            "cerro-navia": {
+                adopcion: [
+                    { img: "img/catalogo/catalogo (3).JPEG", titulo: "Firulais", descripcion: "Perro juguetón en Cerro Navia." },
+                    { img: "img/catalogo/catalogo (4).JPEG", titulo: "Simba", descripcion: "Gato amistoso en Cerro Navia." },
+                ],
+                perdidas: [
+                    { img: "img/catalogo/catalogo (5).JPEG", titulo: "Luna", descripcion: "Extraviada cerca de Cerro Navia." },
+                    { img: "img/catalogo/catalogo (6).JPEG", titulo: "Bobby", descripcion: "Perdido en Cerro Navia." }
+                ]
+            },
+            "puente-alto": {
+                adopcion: [
+                    { img: "img/catalogo/catalogo (7).JPEG", titulo: "Bella", descripcion: "Perra tranquila ideal para familia." },
+                    { img: "img/catalogo/catalogo (8).JPEG", titulo: "Milo", descripcion: "Perro activo en Puente Alto." },
+                ],
+                perdidas: [
+                    { img: "img/catalogo/catalogo (9).JPEG", titulo: "Rocky", descripcion: "Última vez visto en Puente Alto." },
+                    { img: "img/catalogo/catalogo (1).JPEG", titulo: "Nina", descripcion: "Extraviada en Puente Alto." }
+                ]
+            }
+        };
+        function renderCatalogo(comuna, tipo) {
+            const mascotas = comuna === "todas"
+                ? Object.values(comunas).flatMap(c => tipo === "todos" ? [...c.adopcion, ...c.perdidas] : c[tipo] || [])
+                : comunas[comuna]?.[tipo] || [];
+
+            catalogo.innerHTML = mascotas.length
+                ? mascotas.map(m => `
+            <div class="col-md-4">
+                <div class="card">
+                    <img src="${m.img}" class="card-img-top" alt="${m.titulo}">
+                    <div class="card-body">
+                        <h5 class="card-title">${m.titulo}</h5>
+                        <p>${m.descripcion}</p>
                     </div>
                 </div>
             </div>
+        `).join("")
+                : `<div class="col-12 text-center"><p>No se encontraron mascotas publicadas.</p></div>`;
+        }
 
 
-                <div class="container mt-4">
-                    <div class="row justify-content-center">
-                        <div class="col-md-4">
-                            <div class="card">
-                                <img class="card-img-top" src="img/catalogo/catalogo (7).JPEG" alt="Sombra" />
-                                <div class="card-body">
-                                    <h4 class="card-title">Sombra - Adopcion</h4>
-                                    <p class="card-text"><li>Pequeña negrita.</li>
-                                        <li>Muy bien portada.</li>
-                                        <li>Le gusta tomar solcito.</li>
-                                        <li>Ubicacion Pirque, Region Metropolitana.</li>
-                                        <li>Numero de contacto +56932451846.</li>
-                                    </p>
-                                    <a href="#" class="btn btn-primary" style="background-color: #a693ff; border-color: #a693ff;">Saber Mas</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="card">
-                                <img class="card-img-top" src="img/catalogo/catalogo (8).JPEG" alt="Pelusa" />
-                                <div class="card-body">
-                                    <h4 class="card-title">Pelusa - Adopcion</h4>
-                                    <p class="card-text"><li>Gatita Carey.</li>
-                                        <li>Pequeña y amorosa.</li>
-                                        <li>Muy juguetona.</li>
-                                        <li>Ubicacion Pirque, Region Metropolitana.</li>
-                                        <li>Numero de contacto +56915489858.</li>
-                                    </p>
-                                    <a href="#" class="btn btn-primary" style="background-color: #a693ff; border-color: #a693ff;">Saber Mas</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="card">
-                                <img class="card-img-top" src="img/catalogo/catalogo (11).JPEG" alt="Rusio" />
-                                <div class="card-body">
-                                    <h4 class="card-title">Rusio - Adopcion</h4>
-                                    <p class="card-text"><li>Pequeñin de 3 meses.</li>
-                                        <li>Fue rescatado de unos perros.</li>
-                                        <li>Muy curioso y jugueton.</li>
-                                        <li>Ubicacion La Florida, Region Metropolitana.</li>
-                                        <li>Numero de contacto +56975482154.</li>
-                                    </p>
-                                    <a href="#" class="btn btn-primary" style="background-color: #a693ff; border-color: #a693ff;">Saber Mas</a>
+
+        // Función para filtrar mascotas según comuna y tipo
+        const generarCatalogoFiltrado = (comuna, tipo) => {
+            const datos = comunasTrabajadas[comuna]?.[tipo] || [];
+            catalogo.innerHTML = datos.length
+                ? datos
+                    .map(
+                        (m) => `
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="ribbon">${m.estado}</div>
+                        <img src="${m.img}" class="card-img-top" alt="${m.titulo}">
+                        <div class="card-body">
+                            <h5 class="card-title">${m.titulo} - ${tipo.charAt(0).toUpperCase() + tipo.slice(1)}</h5>
+                            <p>${m.descripcion}</p>
+                            <button class="btn btn-detail mb-2" onclick="verDetalle(${m.id})"><i class="fa fa-info-circle"></i> Ver más detalles</button>
+                            <button class="btn btn-favorite mb-2" onclick="guardarFavorito(${m.id})"><i class="fa fa-heart"></i> Guardar en Favoritos</button>
+                            <div class="btn-share">
+                                <i class="fa fa-share-alt"></i> Compartir
+                                <div class="share-options">
+                                    <a href="https://www.facebook.com/sharer/sharer.php?u=#" target="_blank"><i class="fab fa-facebook"></i> Facebook</a>
+                                    <a href="https://twitter.com/intent/tweet?url=#&text=Conoce a esta mascota!" target="_blank"><i class="fab fa-twitter"></i> Twitter</a>
+                                    <a href="https://wa.me/?text=Conoce%20a%20esta%20mascota!" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp</a>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
+                </div>`
+                    )
+                    .join("")
+                : `<div class="col-12"><p class="text-center">No se encontraron mascotas en la comuna seleccionada.</p></div>`;
+        };
 
-        <!-- FIN TARJETAS -->
+        document.getElementById("filtrar").addEventListener("click", () => {
+            const comuna = document.getElementById("filtroComuna").value;
+            const tipo = document.getElementById("filtroTipo").value;
+            renderCatalogo(comuna, tipo === "todos" ? "todos" : tipo);
+        });
+        // Cargar todas las mascotas al inicio
+        renderCatalogo("todas", "todos");
 
-        <!-- ESTILOS PIE DE PAGINA -->
-        <style>
-            /* Estilos Pie de Pagina */
-            .footer {
-                background-color: #6854c0;
-                color: white;
-                padding: 20px 0;
-                text-align: center;
-            }
 
-            .footer a {
-                color: white;
-                text-decoration: none;
-            }
+        // Inicializar con el catálogo principal
+        generarCatalogoFiltrado("cerro-navia", "adopcion");
+    </script>
 
-            .footer a:hover {
-                text-decoration: underline;
-            }
-        </style>
-        <!-- FIN ESTILOS PIE DE PAGINA -->
 
-        <!-- Pie de página -->
-        <footer class="footer" style="margin-top: 20px;">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-4">
-                        <h5>Enlaces de interés</h5>
-                        <ul class="list-unstyled">
-                            <li><a href="#">Términos de servicio</a></li>
-                            <li><a href="#">Política de privacidad</a></li>
-                            <li><a href="servicios.html">Acerca de nosotros</a></li>
-                        </ul>
-                    </div>
-                    <div class="col-md-4">
-                        <h5>Síguenos</h5>
-                        <ul class="list-unstyled">
-                            <li><a href="#">Facebook</a></li>
-                            <li><a href="#">Twitter</a></li>
-                            <li><a href="#">Instagram</a></li>
-                        </ul>
-                    </div>
-                    <div class="col-md-4">
-                        <h5>Contacto</h5>
-                        <ul class="list-unstyled">
-                            <li>Email: info@teencontremascotas.com</li>
-                            <li>Teléfono: +56989324532</li>
-                            <li>Dirección: Avenida Siempre Viva 742</li>
-                        </ul>
-                    </div>
-                </div>
-                <hr>
-                <div class="row">
-                    <div class="col-md-12">
-                        <p class="text-center">© 2024 Michel Araya Caballero / Aldrix Diaz Cornejo - Julio 2024. Todos los derechos
-                            reservados.</p>
-                    </div>
-                </div>
-            </div>
-        </footer>
-        <!-- Fin Pie de página -->
-
-        <!-- Latest compiled JavaScript -->
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"></script>
 </body>
 
 </html>
