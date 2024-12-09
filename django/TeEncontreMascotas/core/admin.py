@@ -16,8 +16,8 @@ class PublicacionAdmin(admin.ModelAdmin):
     
 
 class MensajeAdmin(admin.ModelAdmin):
-    list_display = ['id_mensaje', 'id_remitente', 'id_destinatario', 'id_publicacion', 'fecha_envio']
-    search_fields = ['id_remitente', 'id_destinatario', 'id_publicacion', 'fecha_envio']
+    list_display = ['id_mensaje', 'id_remitente',  'id_publicacion', 'contenido','fecha_envio']
+    search_fields = ['id_remitente', 'id_publicacion', 'contenido', 'fecha_envio']
 
 admin.site.register(Mascota, MascotaAdmin)
 admin.site.register(Usuario, UsuarioAdmin)

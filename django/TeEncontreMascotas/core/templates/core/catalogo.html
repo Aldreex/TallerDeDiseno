@@ -2,8 +2,66 @@
 {% load static %}
 {% block principal %}
 
+<link href="{% static 'core/css/catalogo.css' %}" rel="stylesheet" />
 
-<div class="mt-0 p-5 text-white text-center" style="background-color: #7A6BBC;">
+
+<!-- Catálogo Principal -->
+<div class="container mt-4">
+    <h1 class="text-center mb-4">Catálogo de Mascotas</h1>
+    <div class="row" id="catalogo">
+        <!-- Las tarjetas serán generadas dinámicamente aquí -->
+        {% for mascota in listaMascotas %}
+        <div class="col-md-4">
+            <div class="card">
+                <div class="ribbon">{{mascota.estado}}</div>
+                <img src="{{mascota.imagen.url}}" class="card-img-top" alt="Imagen de {{mascota.nombre}}">
+                <div class="card-body">
+                    <h5 class="card-title">{{mascota.nombre}} - {{mascota.especie}}</h5>
+                    <p>{{mascota.descripcion}}</p>
+                    <button class="btn btn-detail mb-2" onclick="{% comment %} verDetalle({{mascota.id}}) {% endcomment %}"><i class="fa fa-info-circle"></i> Ver más detalles</button>
+                    <button class="btn btn-favorite mb-2" onclick="{% comment %} guardarFavorito({{mascota.id}) {% endcomment %}"><i class="fa fa-heart"></i> Guardar en Favoritos</button>
+                    <div class="btn-share">
+                        <i class="fa fa-share-alt"></i> Compartir
+                        <div class="share-options">
+                            <a href="https://www.facebook.com/sharer/sharer.php?u=#" target="_blank"><i class="fab fa-facebook"></i> Facebook</a>
+                            <a href="https://twitter.com/intent/tweet?url=#&text=Conoce a esta mascota!" target="_blank"><i class="fab fa-twitter"></i> Twitter</a>
+                            <a href="https://wa.me/?text=Conoce%20a%20esta%20mascota!" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+<!-- Favoritos -->
+<div class="container favorites-section">
+    <h2 class="text-center mb-4">Favoritos</h2>
+    <div class="row" id="favoritos">
+        <!-- Los favoritos se mostrarán aquí -->
+    </div>
+</div>
+
+<!-- Modal para Ver Más Detalles -->
+<div class="modal fade" id="detalleModal" tabindex="-1" aria-labelledby="detalleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="detalleModalLabel">Detalles de la Mascota</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <img id="detalleImg" class="img-fluid mb-3" src="" alt="Mascota">
+                <h5 id="detalleTitulo"></h5>
+                <p id="detalleDescripcion"></p>
+                <p><strong>Contacto:</strong> <span id="detalleContacto"></span></p>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% comment %} <div class="mt-0 p-5 text-white text-center" style="background-color: #7A6BBC;">
     <h1>Catalogo de Mascotas</h1>
     <div class="container mt-4">
         <div class="row row-cols-3 justify-content-center">
@@ -32,7 +90,7 @@
         </div>
     </div>
 
-</div>
+</div> {% endcomment %}
         
 
 {% endblock principal %}

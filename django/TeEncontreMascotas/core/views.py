@@ -33,6 +33,7 @@ def catalogo(request):
     datos = {
         "listaMascotas" : listaMascotas
     }
+    
     return TemplateResponse(request, 'core/catalogo.html', datos)
 
 def login(request):

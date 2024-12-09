@@ -156,5 +156,5 @@ class MensajeForm(ModelForm):
     class Meta:
         model = Mensaje
         fields = [
-            'publicacion'
+            'id_publicacion'
         ]

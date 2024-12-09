@@ -1,0 +1,132 @@
+.card {
+    margin-bottom: 20px;
+    border-radius: 10px;
+    position: relative;
+    border: 1px solid #ddd;
+}
+
+.card-img-top {
+    height: 300px;
+    object-fit: cover;
+}
+
+.card-body {
+    background-color: #F8F9FA;
+    border-radius: 10px;
+}
+
+.card-title {
+    font-weight: bold;
+    color: #3E3E3E;
+    margin-bottom: 10px;
+}
+
+.ribbon {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: red;
+    color: white;
+    padding: 5px 10px;
+    font-size: 14px;
+    font-weight: bold;
+    border-radius: 5px;
+    z-index: 1;
+}
+
+.btn-detail {
+    background-color: #875FA4;
+    color: white;
+    font-weight: bold;
+    border: none;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.btn-detail:hover {
+    background-color: #5A3E77;
+    color: white;
+}
+
+.btn-favorite {
+    background-color: transparent;
+    color: red;
+    font-weight: bold;
+    border: none;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.btn-favorite i {
+    margin-right: 5px;
+}
+
+.btn-remove-favorite {
+    background-color: transparent;
+    color: red;
+    font-weight: bold;
+    border: none;
+    margin-top: 10px;
+}
+
+.btn-share {
+    background-color: transparent;
+    color: green;
+    font-weight: bold;
+    border: none;
+    width: 100%;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.btn-share i {
+    margin-right: 5px;
+}
+
+.share-options {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    z-index: 10;
+    padding: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: left;
+}
+
+.share-options a {
+    display: block;
+    color: #3E3E3E;
+    text-decoration: none;
+    margin-bottom: 5px;
+}
+
+.share-options a:hover {
+    text-decoration: underline;
+}
+
+.navbar {
+    background-color: #F6F6FF;
+}
+
+.container {
+    margin-top: 30px;
+}
+
+.favorites-section {
+    margin-top: 50px;
+}
+
+@media (max-width: 768px) {
+    .card-img-top {
+        height: 250px;
+    }
+
+    .col-md-4 {
+        margin-bottom: 15px;
+    }
+}
