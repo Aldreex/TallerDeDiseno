@@ -162,7 +162,7 @@
                     <div class="card-body">
                         <h5 class="card-title">{{mascota.nombre}} - {{mascota.especie}}</h5>
                         <p>{{mascota.descripcion}}</p>
-                        <button class="btn btn-detail mb-2" onclick="{% comment %} verDetalle({{mascota.id}}) {% endcomment %}"><i class="fa fa-info-circle"></i> Ver más detalles</button>
+                        <button class="btn btn-detail mb-2" onclick="abrirModal({{mascota.id_mascota}})"><i class="fa fa-info-circle"></i> Ver más detalles</button>
                         <button class="btn btn-remove-favorite" onclick="eliminarFavorito({{mascota.id_mascota}}, {{session.id}})"><i class="fa fa-trash"></i> Eliminar de Favoritos</button>
                     </div>
                 </div>
