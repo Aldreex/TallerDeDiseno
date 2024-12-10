@@ -1,5 +1,15 @@
 from django.db import models
 
+
+    
+
+class Comuna(models.Model):
+    id_comuna = models.AutoField(verbose_name="Id Comuna", primary_key=True)
+    nombre = models.CharField(max_length=256, unique=True)
+
+    def __str__(self):
+        return self.nombre
+
 class Usuario(models.Model):
     id_usuario = models.AutoField(verbose_name="Id de Usuario", primary_key=True)
     rut = models.CharField(max_length=12, null=False, default="none")
@@ -11,6 +21,8 @@ class Usuario(models.Model):
     edad = models.CharField(max_length=10, blank=True, null=True)
     ciudad = models.CharField(max_length=20, blank=True, null=True)
     fono = models.CharField(max_length=10, blank=True, null=True)
+    comuna = models.ForeignKey(Comuna, on_delete=models.CASCADE, default=34, null=True)
+    
 
     def __str__(self):
         return f"{self.nombre} {self.apellido}"
@@ -26,7 +38,7 @@ class Mascota(models.Model):
     ubicacion = models.CharField("Ubicacion Mascota", max_length=64)
     estado = models.CharField("Estado Mascota", max_length=20, null=True)
     fecha_registro = models.DateField("Fecha de Registro")
-    imagen = models.ImageField(null=True, default="null", blank=True)
+    imagen = models.ImageField(upload_to="mascotas/", null=True, default="null", blank=True)
     id_usuario = models.ForeignKey(Usuario, on_delete=models.CASCADE)
 
     def __str__(self):
@@ -35,6 +47,7 @@ class Mascota(models.Model):
 class Favoritos(models.Model):
     id_usuario = models.ForeignKey(Usuario, on_delete=models.CASCADE)
     id_mascota = models.ManyToManyField(Mascota)
+
 
 class Publicacion(models.Model):
     id_publicacion = models.AutoField(verbose_name="Id de Publicacion", primary_key=True)

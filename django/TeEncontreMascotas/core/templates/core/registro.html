@@ -27,6 +27,13 @@
                 <div class="mb-3">
                     {% csrf_token %}          
                     {{form}}
+                    <label for="comuna" class="form-label">Comuna</label>
+                    <select id="comuna" class="form-select" name="comuna" required> 
+                        <option value="">Seleccione su comuna</option>
+                        {% for comuna in comunas %}
+                        <option value="{{comuna.id_comuna}}">{{comuna.nombre}}</option>
+                        {% endfor %}
+                    </select>
                 </div> 
                 <button class="btn" type="submit" value="Submit" id="btnGuardar" name="btnGuardar" style="background-color: #a693ff; color: white;">Registrar Datos</button>
 

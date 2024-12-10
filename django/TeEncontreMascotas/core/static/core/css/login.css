@@ -1,8 +1,8 @@
-
 body {
-    
+
     margin: 0;
-    /*background-image: url('img/background.jpg');  Ruta relativa a la imagen */
+    background-image: url('img/image_3.jpg');
+    /* Ruta relativa a la imagen */
     background-size: cover;
     background-repeat: no-repeat;
     display: flex;
@@ -22,24 +22,28 @@ form {
     padding: 20px;
     border: 1px solid #ccc;
     border-radius: 5px;
-    background-color: rgba(255, 255, 255, 0.5); /* Fondo semi-transparente */
+    background-color: rgba(255, 255, 255, 0.5);
+    /* Fondo semi-transparente */
 }
 
 .main-title {
     text-align: center;
-    font-size: 28px; /* Tamaño reducido del título */
+    font-size: 28px;
+    /* Tamaño reducido del título */
     margin-bottom: 1px;
 }
 
 h2 {
     text-align: center;
-    font-size: 16px; /* Tamaño del subtítulo */
+    font-size: 16px;
+    /* Tamaño del subtítulo */
     margin-bottom: 1px;
 }
 
 h1.form-title {
     text-align: center;
-    font-size: 25px; /* Tamaño del subtítulo */
+    font-size: 25px;
+    /* Tamaño del subtítulo */
     margin-bottom: 10px;
 }
 
@@ -49,7 +53,7 @@ label {
     display: block;
 }
 
-input[type="email"],
+input[type="text"],
 input[type="password"] {
     width: 100%;
     padding: 8px;
@@ -59,7 +63,8 @@ input[type="password"] {
 }
 
 input[type="checkbox"] {
-    margin-right: 5px; /* Espacio entre el cuadro de verificación y el texto */
+    margin-right: 5px;
+    /* Espacio entre el cuadro de verificación y el texto */
 }
 
 .checkbox-label {
@@ -70,7 +75,7 @@ input[type="checkbox"] {
 button {
     width: 100%;
     padding: 10px;
-    background-color: #a693ff;
+    background-color: #C5A6D8;
     color: white;
     border: none;
     border-radius: 4px;
@@ -90,7 +95,8 @@ button:hover {
 
 .forgot-password a,
 .register-button a {
-    color: #000000; /* Cambio del color del enlace */
+    color: #000000;
+    /* Cambio del color del enlace */
     text-decoration: none;
 }
 
@@ -100,7 +106,7 @@ button:hover {
 }
 
 .footer {
-    background-color: #6854c0;
+    background-color: #C5A6D8;
     color: white;
     padding: 20px 0;
     text-align: center;
@@ -116,6 +122,8 @@ button:hover {
 }
 
 .nav-link {
-    padding-top: 5px; /* Ajustar este valor según sea necesario */
-    padding-bottom: 6px; /* Ajustar este valor según sea necesario */
+    padding-top: 5px;
+    /* Ajustar este valor según sea necesario */
+    padding-bottom: 6px;
+    /* Ajustar este valor según sea necesario */
 }

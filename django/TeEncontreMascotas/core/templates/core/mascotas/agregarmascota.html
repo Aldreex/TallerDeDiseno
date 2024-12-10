@@ -4,9 +4,17 @@
 
 {% block principal %}
 <div class="container d-flex justify-content-center">
-    <form class="mt-2 my-auto" id="registroMascota" enctype="multipart" method="POST" action="{% url 'agregarmascota' %}">
+    <form class="mt-2 my-auto" id="registroMascota" enctype="multipart/form-data" method="POST" action="{% url 'agregarmascota' %}">
         {% csrf_token %}
         {{form}}
+        <div>
+            <label for="estado">Estado Mascota: </label>
+            <select id="estado" name="estado" class="form-control" required>
+                <option value="adopcion">En Adopción</option>
+                <option value="perdido">Perdida</option>
+            </select>
+    
+        </div>
         <button class="mt-2" type="submit" value="Submit">Agregar Mascota</button>
     
     </form>

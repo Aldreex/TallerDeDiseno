@@ -49,7 +49,8 @@ class RegisterForm(ModelForm):
             'direccion',
             'edad',
             'ciudad',
-            'fono'
+            'fono',
+            'comuna'
         ] 
         widgets = {
             "nombre" : forms.TextInput(
@@ -109,7 +110,8 @@ class RegisterForm(ModelForm):
                     "required" : True
 
                 }
-            )
+            ),
+            "comuna": forms.HiddenInput()
         }
         
 class AgregarMascota(ModelForm):
@@ -123,6 +125,7 @@ class AgregarMascota(ModelForm):
             "descripcion",
             "ubicacion",
             "estado",
+            "imagen"
         ]
         widgets = {
             "nombre": forms.TextInput(attrs={"label": "Nombre", "class": "form-control", "required": True}),
@@ -130,8 +133,9 @@ class AgregarMascota(ModelForm):
             "especie": forms.TextInput(attrs={"class": "form-control", "required": True}),
             "raza": forms.TextInput(attrs={"class": "form-control", "required": True}),
             "descripcion": forms.TextInput(attrs={"class": "form-control", "cols":110, "required": True}),
-            "ubicacion": forms.TextInput(attrs={"class": "form-control", "required": True}),
-            "estado": forms.TextInput(attrs={"class": "form-control", "required": True}),
+            "ubicacion": forms.TextInput(attrs={"class": "form-control", "required": True}),  
+            "estado" : forms.HiddenInput(),
+            "imagen": forms.ClearableFileInput(attrs={"class": "form-control"})
         }
 
 class RecuperarContrasenaForm(ModelForm):

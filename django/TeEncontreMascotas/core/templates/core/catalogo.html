@@ -1,8 +1,92 @@
 {% extends "core/base.html" %}
 {% load static %}
+
+
+
 {% block principal %}
 
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
 <link href="{% static 'core/css/catalogo.css' %}" rel="stylesheet" />
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+{% csrf_token %}
+<div class="container mt-3">
+
+  <form class="row g-3" action="{% url 'catalogo' %}" method="POST">
+      {% csrf_token %}
+      <div class="col-md-6">
+          <label for="filtroComuna" class="form-label">Comuna</label>
+          <select id="filtroComuna" class="form-select" name="filtroComuna"> 
+            <option value="todas">Todas las Comunas</option>
+            {% for comuna in comunas %}
+            <option value="{{comuna.id_comuna}}">{{comuna.nombre}}</option>
+            {% endfor %}
+          </select>
+      </div>
+      <div class="col-md-6">
+          <label for="filtroTipo" class="form-label">Tipo</label>
+          <select id="filtroTipo" class="form-select" name="filtroTipo">
+              <option value="todos">Todos</option>
+              <option value="adopcion">Mascotas en Adopción</option>
+              <option value="perdido">Mascotas Perdidas</option>
+          </select>
+      </div>
+      <div class="col-12 text-center">
+          <button type="Submit" id="filtrar" class="btn btn-primary">Filtrar</button>
+      </div>
+  </form>
+</div>
+
+<div class="col-md-4">
+  <div class="card"
+    style="
+      position: fixed;
+      top: 50%;
+      left: 0; 
+      transform: translateY(-50%); 
+      width: 200px; 
+      height: 500px; 
+      border: none; 
+      z-index: 999;"
+    >
+      <img 
+      src="img/BannerMundoTito.png" 
+      class="card-img-top" 
+      alt="MundoTito Banner" 
+      style="
+      height: 100%; 
+      width: 100%; 
+      object-fit: cover;
+      "
+      >
+  </div>
+</div>
+<div class="col-md-4">
+  <div 
+    class="card" 
+    style="
+      position: fixed; 
+      top: 50%; 
+      right: 0; 
+      transform: translateY(-50%); 
+      width: 200px; 
+      height: 500px; 
+      border: none; 
+      z-index: 999;
+    "
+  >
+    <img 
+      src="img/BannerSuperZoo.png" 
+      class="card-img-top" 
+      alt="SuperZoo Banner" 
+      style="
+        height: 100%; 
+        width: 100%; 
+        object-fit: cover;
+      "
+    />
+  </div>
+</div>
 
 
 <!-- Catálogo Principal -->
@@ -11,15 +95,33 @@
     <div class="row" id="catalogo">
         <!-- Las tarjetas serán generadas dinámicamente aquí -->
         {% for mascota in listaMascotas %}
+        {% if not mascota.estado == "hidden" %}
         <div class="col-md-4">
             <div class="card">
-                <div class="ribbon">{{mascota.estado}}</div>
+                <div class="ribbon">
+                  {% if mascota.estado == "adopcion" %}
+                  Adopcion
+                  {% else %}
+                  Perdida
+                  {% endif %}
+                </div>
                 <img src="{{mascota.imagen.url}}" class="card-img-top" alt="Imagen de {{mascota.nombre}}">
                 <div class="card-body">
                     <h5 class="card-title">{{mascota.nombre}} - {{mascota.especie}}</h5>
                     <p>{{mascota.descripcion}}</p>
-                    <button class="btn btn-detail mb-2" onclick="{% comment %} verDetalle({{mascota.id}}) {% endcomment %}"><i class="fa fa-info-circle"></i> Ver más detalles</button>
-                    <button class="btn btn-favorite mb-2" onclick="{% comment %} guardarFavorito({{mascota.id}) {% endcomment %}"><i class="fa fa-heart"></i> Guardar en Favoritos</button>
+                    <button class="btn btn-detail mb-2" onclick="abrirModal({{mascota.id_mascota}})"><i class="fa fa-info-circle"></i> Ver más detalles</button>
+                    {% if sesionIniciada %}
+                    {% with funcname="fav"%}
+                    <button 
+                      id="{{funcname}}{{mascota.id_mascota}}"
+                      class="btn btn-favorite mb-2" 
+                      onclick="guardarFavorito({{mascota.id_mascota}},{{session.id}})"
+                    >
+                      <i class="fa fa-heart"></i> Guardar en Favoritos
+                    </button>
+                    {% endwith %}
+                    {% endif %}
+                      
                     <div class="btn-share">
                         <i class="fa fa-share-alt"></i> Compartir
                         <div class="share-options">
@@ -31,17 +133,47 @@
                 </div>
             </div>
         </div>
+        {% endif %}
         {% endfor %}
     </div>
 </div>
 
+{% if sesionIniciada %}
 <!-- Favoritos -->
 <div class="container favorites-section">
     <h2 class="text-center mb-4">Favoritos</h2>
     <div class="row" id="favoritos">
-        <!-- Los favoritos se mostrarán aquí -->
+        {% if estado_favoritos == 0 %}
+        <h3 class="text-center mb-4">Aún no tienes favoritos</h3>
+        {% elif estado_favoritos == -1%}
+        <h3 class="text-center mb-4">Aún no tienes favoritos</h3>
+        {% else %}
+            {% for mascota in favs %}
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="ribbon">
+                      {% if mascota.estado == "adopcion" %}
+                      Adopcion
+                      {% else %}
+                      Perdida
+                      {% endif %}
+                    </div>
+                    <img src="{{mascota.imagen.url}}" class="card-img-top" alt="Imagen de {{mascota.nombre}}">
+                    <div class="card-body">
+                        <h5 class="card-title">{{mascota.nombre}} - {{mascota.especie}}</h5>
+                        <p>{{mascota.descripcion}}</p>
+                        <button class="btn btn-detail mb-2" onclick="{% comment %} verDetalle({{mascota.id}}) {% endcomment %}"><i class="fa fa-info-circle"></i> Ver más detalles</button>
+                        <button class="btn btn-remove-favorite" onclick="eliminarFavorito({{mascota.id_mascota}}, {{session.id}})"><i class="fa fa-trash"></i> Eliminar de Favoritos</button>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+
+        {% endif %}
+
     </div>
 </div>
+{% endif %}
 
 <!-- Modal para Ver Más Detalles -->
 <div class="modal fade" id="detalleModal" tabindex="-1" aria-labelledby="detalleModalLabel" aria-hidden="true">
@@ -61,36 +193,72 @@
     </div>
 </div>
 
-{% comment %} <div class="mt-0 p-5 text-white text-center" style="background-color: #7A6BBC;">
-    <h1>Catalogo de Mascotas</h1>
-    <div class="container mt-4">
-        <div class="row row-cols-3 justify-content-center">
-            {% for mascota in listaMascotas %}
-            <div class="col-md-4">
-                <div class="card">
-                    {% if not mascota.imagen  == 'null' %}
-                    <img class="card-img-top" src="{{mascota.imagen.url}}" />
-                    
-                    {% endif %}
+<script>
+  const abrirModal = async (id_mascota) => {
+    const param = encodeURIComponent(id_mascota)
+    const detalles = await 
+      axios.get("{% url 'conseguirDetalle' %}?id_mascota="+param)
+      .then((resp) => {
+        console.log("ok"); 
+        return resp.data;
+      })
+      .catch((err) => console.log(err));
 
-                    <div class="card-body">
-                        <h4 class="card-title">{{mascota.nombre}} - {{mascota.estado}}</h4>
-                        <p class="card-text"><li>{{mascota.especie}}</li>
-                            <li>{{mascota.raza}}</li>
-                            <li>{{mascota.edad}}</li>
-                            <li>{{mascota.ubicacion}}</li>
-                            <li>Numero de contacto +56967529753.</li>
-                        </p>
-                        <a href="#" class="btn btn-primary" style="background-color: #a693ff; border-color: #a693ff;">Saber Mas</a>
-                    </div>
-                </div>
-            </div>
-            {% endfor %}
-            
-        </div>
-    </div>
+    document.getElementById("detalleImg").src = detalles.urlImagen ;
+    document.getElementById("detalleTitulo").innerText = `${detalles.nombre} - ${detalles.especie}`;
+    document.getElementById("detalleDescripcion").innerText = detalles.descripcion;
+    document.getElementById("detalleContacto").innerText = detalles.fono;
+    const detalleModal = new bootstrap.Modal(document.getElementById("detalleModal"));
+    detalleModal.show();
+      
+      
+  }
+  const guardarFavorito = async (id_mascota, id_usuario = null) => {
+    if(!id_usuario){
+      alert("Debes Iniciar sesion para agregar a favoritos");
+      return
+    };
 
-</div> {% endcomment %}
-        
+    await axios.post(
+      "{% url 'guardarFavorito' %}", 
+      {
+        "id_mascota": id_mascota,
+        "id_usuario": id_usuario
+      },
+      {
+        headers : {"X-CSRFToken": "{{ csrf_token }}"}
+      }
+    )
+    .then((resp) => {console.log("OK");})
+    .catch((err) => {console.log(err);})
+
+    window.location.href= "{% url 'catalogo' %}"
+  }
+
+  const eliminarFavorito = async (id_mascota, id_usuario = null) => {
+    if(!id_usuario){
+      alert("Debes Iniciar sesion para eliminar de favoritos");
+      return
+    };
+
+    await axios.post(
+      "{% url 'eliminarFavorito' %}", 
+      {
+        "id_mascota": id_mascota,
+        "id_usuario": id_usuario
+      },
+      {
+        headers : {"X-CSRFToken": "{{ csrf_token }}"}
+      }
+    )
+    .then((resp) => {
+      console.log("OK");
+    })
+    .catch((err) => {console.log(err);})
+
+    window.location.href= "{% url 'catalogo' %}"
+    
+  }
+</script>
 
 {% endblock principal %}
